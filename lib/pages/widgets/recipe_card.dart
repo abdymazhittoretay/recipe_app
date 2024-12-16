@@ -25,7 +25,11 @@ class RecipeCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.circular(20.0),
-        image: DecorationImage(image: NetworkImage(photoUrl)),
+        image: DecorationImage(
+          image: NetworkImage(photoUrl),
+          fit: BoxFit.fill,
+          colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
+        ),
       ),
       child: Stack(
         children: [
@@ -33,9 +37,7 @@ class RecipeCard extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               title,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24.0),
+              style: TextStyle(color: Colors.white, fontSize: 24.0),
             ),
           ),
           Align(
@@ -43,35 +45,47 @@ class RecipeCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    SizedBox(
-                      width: 5.0,
-                    ),
-                    Text(
-                      rating,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                Container(
+                  padding: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(20.0)),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text(
+                        rating,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.timelapse,
-                      color: Colors.yellow,
-                    ),
-                    SizedBox(
-                      width: 5.0,
-                    ),
-                    Text(
-                      rating,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                Container(
+                  padding: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(20.0)),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.timelapse,
+                        color: Colors.yellow,
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text(
+                        rating,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
