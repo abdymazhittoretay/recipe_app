@@ -27,7 +27,7 @@ class RecipeCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0),
         image: DecorationImage(
           image: NetworkImage(photoUrl),
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
         ),
       ),
@@ -46,9 +46,9 @@ class RecipeCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                      color: Colors.black54,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(20.0)),
                   child: Row(
                     children: [
@@ -67,9 +67,9 @@ class RecipeCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                      color: Colors.black54,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(20.0)),
                   child: Row(
                     children: [
