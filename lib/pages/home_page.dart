@@ -33,7 +33,8 @@ class _HomePageState extends State<HomePage> {
         title: "SOME",
         rating: "5.0",
         cookTime: "15 MIN",
-        photoUrl: "https://lh3.googleusercontent.com/DdIxWsMN4NsGNIbkiHIeuF5oyMd9ID2y1Oa6DWceINv10w4d7_D6TBgLeH7AABE2M0ZrY5pAc2xHNuWmzm9cPg",
+        photoUrl:
+            "https://lh3.googleusercontent.com/Sd_u2O9p_hwxK4xix_puCGAxWxtf7XyLe1Fhld-4xvxLGo39fYNEiOnij-sT_qn2jZDqWsnv393bqgD1ijoo7Q=s360",
       ),
     );
   }

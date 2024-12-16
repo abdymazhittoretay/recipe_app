@@ -48,7 +48,7 @@ class RecipeCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: Colors.black54,
                       borderRadius: BorderRadius.circular(20.0)),
                   child: Row(
                     children: [
@@ -69,7 +69,7 @@ class RecipeCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: Colors.black54,
                       borderRadius: BorderRadius.circular(20.0)),
                   child: Row(
                     children: [
