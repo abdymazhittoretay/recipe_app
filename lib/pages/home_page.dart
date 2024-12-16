@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:recipe_app/models/recipe.api.dart';
+import 'package:recipe_app/models/recipe_model.dart';
 import 'package:recipe_app/pages/widgets/recipe_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +13,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<RecipeModel> _recipes = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    getRecipes();
+  }
+
+  Future<void> getRecipes() async {
+    _recipes = await RecipeApi.getRecipe();
+    print(_recipes);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
