@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     var response = await http.get(Uri.https(
         "api.spoonacular.com",
         "/recipes/random",
-        {"apiKey": "5960bf80f0db481fbe0ce0f910a62e10", "number": "20"}));
+        {"apiKey": "5960bf80f0db481fbe0ce0f910a62e10", "number": "100"}));
     var data = jsonDecode(response.body);
 
     for (var i in data["recipes"]) {
@@ -31,13 +31,31 @@ class _HomePageState extends State<HomePage> {
           image: i["image"] ?? "");
       recipes.add(recipe);
     }
-
-    print(recipes);
   }
 
   @override
   Widget build(BuildContext context) {
-    getRecipes();
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: FutureBuilder(
+          future: getRecipes(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return ListView.builder(
+                  itemCount: recipes.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(recipes[index].title),
+                    );
+                  });
+            } else {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.blue,
+                ),
+              );
+            }
+          }),
+    );
   }
 }
