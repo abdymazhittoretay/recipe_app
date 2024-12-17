@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:recipe_app/model/recipe.dart';
+import 'package:recipe_app/pages/widgets/recipe_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,9 +45,10 @@ class _HomePageState extends State<HomePage> {
               return ListView.builder(
                   itemCount: recipes.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(recipes[index].title),
-                    );
+                    return RecipeCard(
+                        title: recipes[index].title,
+                        readyInMinutes: recipes[index].readyInMinutes,
+                        image: recipes[index].image);
                   });
             } else {
               return Center(
