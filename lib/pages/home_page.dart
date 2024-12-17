@@ -22,14 +22,15 @@ class _HomePageState extends State<HomePage> {
     var response = await http.get(Uri.https(
         "api.spoonacular.com",
         "/recipes/random",
-        {"apiKey": "5960bf80f0db481fbe0ce0f910a62e10", "number": "100"}));
+        {"apiKey": "5960bf80f0db481fbe0ce0f910a62e10", "number": "20"}));
     var data = jsonDecode(response.body);
 
     for (var i in data["recipes"]) {
       final recipe = Recipe(
-          title: i["title"] ?? "",
-          readyInMinutes: i["readyInMinutes"] ?? 0,
-          image: i["image"] ?? "");
+          title: i["title"] ?? "ERROR",
+          readyInMinutes: i["readyInMinutes"] ?? -1,
+          image: i["image"] ??
+              "https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg");
       recipes.add(recipe);
     }
   }
