@@ -32,41 +32,58 @@ class _HomePageState extends State<HomePage> {
           readyInMinutes: i["readyInMinutes"] ?? -1,
           image: i["image"] ??
               "https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg",
-          sourceUrl: i["sourceUrl"] ?? "https://leetcode.com/problemset/algorithms/?sorting=W3t9XQ%3D%3D");
+          sourceUrl: i["sourceUrl"] ??
+              "https://leetcode.com/problemset/algorithms/?sorting=W3t9XQ%3D%3D");
       recipes.add(recipe);
     }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    getRecipes();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: FutureBuilder(
-          future: getRecipes(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return ListView.builder(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        surfaceTintColor: Colors.black,
+        title: Text(
+          "Recipes",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: recipes.isNotEmpty
+          ? Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: ListView.builder(
                   itemCount: recipes.length,
                   itemBuilder: (context, index) {
                     return RecipeCard(
-                        title: recipes[index].title,
-                        readyInMinutes: recipes[index].readyInMinutes,
-                        image: recipes[index].image,
-                        onTap: () async {
-                          final Uri _url = Uri.parse(recipes[index].sourceUrl);
-                          if(await canLaunchUrl(_url)){
-                            await launchUrl(_url);
-                          }
-                        },);
-                  });
-            } else {
-              return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.blue,
-                ),
-              );
-            }
-          }),
+                      title: recipes[index].title,
+                      readyInMinutes: recipes[index].readyInMinutes,
+                      image: recipes[index].image,
+                      onTap: () async {
+                        final Uri url = Uri.parse(recipes[index].sourceUrl);
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url);
+                        }
+                      },
+                    );
+                  }),
+            )
+          : Center(
+              child: CircularProgressIndicator(
+                color: Colors.blue,
+              ),
+            ),
     );
   }
 }

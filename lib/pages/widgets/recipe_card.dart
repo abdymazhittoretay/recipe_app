@@ -23,21 +23,22 @@ class RecipeCard extends StatelessWidget {
       child: Container(
         width: MediaQuery.sizeOf(context).width,
         height: MediaQuery.sizeOf(context).height * 0.2,
-        margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        margin: EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10.0),
         padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
             color: Colors.black,
             image: DecorationImage(
                 image: NetworkImage(image),
                 fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken)),
+                colorFilter:
+                    ColorFilter.mode(Colors.black45, BlendMode.darken)),
             borderRadius: BorderRadius.circular(10.0)),
         child: Stack(children: [
           Align(
             alignment: Alignment.center,
             child: Text(
               title,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white, fontSize: 16.0),
             ),
           ),
           Align(
