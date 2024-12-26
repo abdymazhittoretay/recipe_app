@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:recipe_app/model/recipe.dart';
+import 'package:recipe_app/pages/favorites_page.dart';
 import 'package:recipe_app/pages/widgets/recipe_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -61,7 +62,13 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FavoritesPage(),
+                    ));
+              },
               icon: Icon(
                 Icons.favorite,
                 color: Colors.white,
