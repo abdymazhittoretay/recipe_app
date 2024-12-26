@@ -59,6 +59,14 @@ class _HomePageState extends State<HomePage> {
             color: Colors.white,
           ),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.white,
+              ))
+        ],
       ),
       body: recipes.isNotEmpty
           ? Padding(

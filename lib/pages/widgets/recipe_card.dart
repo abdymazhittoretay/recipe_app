@@ -47,7 +47,7 @@ class RecipeCard extends StatelessWidget {
               children: [
                 Icon(
                   Icons.timelapse,
-                  color: Colors.yellow,
+                  color: Colors.white,
                 ),
                 SizedBox(
                   width: 5.0,
@@ -57,6 +57,13 @@ class RecipeCard extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
               ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Icon(
+              Icons.favorite_border,
+              color: Colors.white,
             ),
           )
         ]),
