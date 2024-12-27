@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
             )
           : Center(
               child: CircularProgressIndicator(
-                color: Colors.blue,
+                color: Colors.black,
               ),
             ),
     );
