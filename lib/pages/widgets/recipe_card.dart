@@ -10,14 +10,15 @@ class RecipeCard extends StatelessWidget {
   final void Function()? onPressed;
   final bool isFavorite;
 
-  const RecipeCard(
-      {super.key,
-      required this.title,
-      required this.readyInMinutes,
-      required this.image,
-      required this.onTap,
-      required this.isFavorite,
-      required this.onPressed});
+  const RecipeCard({
+    super.key,
+    required this.title,
+    required this.readyInMinutes,
+    required this.image,
+    required this.onTap,
+    required this.onPressed,
+    required this.isFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {

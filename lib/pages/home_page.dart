@@ -69,7 +69,9 @@ class _HomePageState extends State<HomePage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => FavoritesPage(),
-                    ));
+                    )).then((_) {
+                  setState(() {});
+                });
               },
               icon: Icon(
                 Icons.favorite,
