@@ -7,14 +7,17 @@ class RecipeCard extends StatelessWidget {
   final int readyInMinutes;
   final String image;
   final void Function()? onTap;
+  final void Function()? onPressed;
+  final bool isFavorite;
 
-  const RecipeCard({
-    super.key,
-    required this.title,
-    required this.readyInMinutes,
-    required this.image,
-    required this.onTap,
-  });
+  const RecipeCard(
+      {super.key,
+      required this.title,
+      required this.readyInMinutes,
+      required this.image,
+      required this.onTap,
+      required this.isFavorite,
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -78,12 +81,18 @@ class RecipeCard extends StatelessWidget {
           ),
         ),
         Align(
-          alignment: Alignment.bottomRight,
-          child: Icon(
-            Icons.favorite_border,
-            color: Colors.white,
-          ),
-        )
+            alignment: Alignment.bottomRight,
+            child: IconButton(
+                onPressed: onPressed,
+                icon: isFavorite
+                    ? Icon(
+                        Icons.favorite,
+                        color: Colors.white,
+                      )
+                    : Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                      ))),
       ]),
     );
   }

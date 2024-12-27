@@ -4,6 +4,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:recipe_app/database/boxes.dart';
+import 'package:recipe_app/model/favorite.dart';
 import 'package:recipe_app/model/recipe.dart';
 import 'package:recipe_app/pages/favorites_page.dart';
 import 'package:recipe_app/pages/widgets/recipe_card.dart';
@@ -81,16 +83,40 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                   itemCount: recipes.length,
                   itemBuilder: (context, index) {
+                    final Recipe recipe = recipes[index];
+                    final bool isFavorite = favBox.values.any((element) {
+                      return element.title == recipe.title &&
+                          element.sourceUrl == recipe.sourceUrl;
+                    });
                     return RecipeCard(
-                      title: recipes[index].title,
-                      readyInMinutes: recipes[index].readyInMinutes,
-                      image: recipes[index].image,
+                      title: recipe.title,
+                      readyInMinutes: recipe.readyInMinutes,
+                      image: recipe.image,
                       onTap: () async {
-                        final Uri url = Uri.parse(recipes[index].sourceUrl);
+                        final Uri url = Uri.parse(recipe.sourceUrl);
                         if (await canLaunchUrl(url)) {
                           await launchUrl(url);
                         }
                       },
+                      onPressed: () {
+                        setState(() {
+                          if (isFavorite) {
+                            final deleteKey = favBox.keys.firstWhere((key) {
+                              final Favorite someValue = favBox.get(key);
+                              return someValue.title == recipe.title &&
+                                  someValue.sourceUrl == recipe.sourceUrl;
+                            });
+                            favBox.delete(deleteKey);
+                          } else {
+                            favBox.add(Favorite(
+                                title: recipe.title,
+                                readyInMinutes: recipe.readyInMinutes,
+                                image: recipe.image,
+                                sourceUrl: recipe.sourceUrl));
+                          }
+                        });
+                      },
+                      isFavorite: isFavorite,
                     );
                   }),
             )
