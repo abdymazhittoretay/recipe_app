@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:convert';
 
@@ -56,11 +56,22 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         surfaceTintColor: Colors.black,
-        title: Text(
-          "Recipes",
-          style: TextStyle(
-            color: Colors.white,
-          ),
+        title: Row(
+          children: [
+            Icon(
+              Icons.restaurant,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 5.0,
+            ),
+            Text(
+              "Recipes",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ],
         ),
         actions: [
           IconButton(
