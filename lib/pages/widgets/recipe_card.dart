@@ -82,18 +82,25 @@ class RecipeCard extends StatelessWidget {
           ),
         ),
         Align(
-            alignment: Alignment.bottomRight,
+          alignment: Alignment.bottomRight,
+          child: SizedBox(
+            width: 24,
+            height: 24,
             child: IconButton(
-                onPressed: onPressed,
-                icon: isFavorite
-                    ? Icon(
-                        Icons.favorite,
-                        color: Colors.white,
-                      )
-                    : Icon(
-                        Icons.favorite_border,
-                        color: Colors.white,
-                      ))),
+              onPressed: onPressed,
+              padding: EdgeInsets.zero,
+              icon: isFavorite
+                  ? Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                    )
+                  : Icon(
+                      Icons.favorite_border,
+                      color: Colors.white,
+                    ),
+            ),
+          ),
+        ),
       ]),
     );
   }
